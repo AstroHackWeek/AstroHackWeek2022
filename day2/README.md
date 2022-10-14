@@ -1,6 +1,8 @@
 # Day 2 afternoon session: Practical machine learning for astronomers 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AstroHackWeek/AstroHackWeek2022)
 
+This repository contains two machine learning tutorials. We will learn how to apply several machine learning algorithms, ranging from polynomial regression and random forests to deep convolutional neural networks, in order to answer a science qeustion (see e.g. [Wu 2020](https://ui.adsabs.harvard.edu/abs/2020ApJ...900..142W/abstract)). These notebooks will also help you gain familiarity with the `scikit-learn` and `pytorch`/`fastai` Python packages for machine learning.
+
 Presented by John F. Wu ([@jwuphysics](https://github.com/jwuphysics)).
 
 # Getting started
@@ -46,7 +48,6 @@ If you want to run these notebooks locally, then you should clone the repository
 
 # Other resources
 
-- [ISM\*@ST Bayesian tutorials by Erik Tollerud](https://github.com/eteq/bayes-ismstar)
 - [Data analysis recipes: Fitting a model to data](https://arxiv.org/abs/1008.4686)
 - [Scikit-learn - Machine learning with Python](https://scikit-learn.org/stable/)
 - [Fast.ai - Practical Deep Learning for Coders](https://course.fast.ai/)
