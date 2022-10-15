@@ -1,6 +1,6 @@
 # Example DVC Pipeline
 
-This folder demonstrates how to set up a DVC pipeline with existing code.
+This folder demonstrates how to set up a [DVC pipeline](https://dvc.org/doc/start/data-management/data-versioning) with existing code.
 
 1. Copy your code out of notebooks etc. and into scripts.
 2. Execute each stage with `dvc run -n {name} -d {dependency} -o {output} {command}`
@@ -37,31 +37,6 @@ This bit is your job! Remember: describe the scripts as a series of steps, each 
 
     # TODO for you
 
-I recommend the `dvc run` [docs](https://dvc.org/doc/command-reference/run#run).
-
+I recommend the `dvc run` [docs](https://dvc.org/doc/command-reference/run#run) and the versioning [tutorial](https://dvc.org/doc/use-cases/versioning-data-and-models/tutorial).
 
 For extra bonus points, add Weights and Biases tracking in train_cnn.py. See the [TensorFlow guide](https://docs.wandb.ai/guides/integrations/tensorflow)
-
-## Solution
-
-    dvc init --subdir
-
-    dvc run \
-        -n download_data \
-        -d deepmerge/download_data.py \
-        -o deepmerge/latest_data.fits \
-        python deepmerge/download_data.py deepmerge/latest_data.fits
-
-    dvc run \
-        -n prepare_data \
-        -d deepmerge/prepare_data.py \
-        -d deepmerge/latest_data.fits \
-        -o deepmerge/prepared_data \
-        python deepmerge/prepare_data.py
-
-    dvc run \
-        -n train_cnn \
-        -d deepmerge/train_cnn.py \
-        -d deepmerge/prepared_data \
-        -o deepmerge/models/latest \
-        python deepmerge/train_cnn.py

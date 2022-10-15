@@ -1,15 +1,19 @@
 import os
-from babel import default_locale
 
 import numpy as np
 from keras.models import Model
 from keras.layers import Input, Flatten, Dense, Dropout, BatchNormalization
 from keras.layers.convolutional import Convolution2D, MaxPooling2D
 from keras.regularizers import l2
-from keras.callbacks import ModelCheckpoint, EarlyStopping, TensorBoard
+from keras.callbacks import ModelCheckpoint, EarlyStopping
 
 # for bonus points:
 # import wandb
+# and either
+# from keras.callbacks import TensorBoard
+# or
+# from wandb.keras import WandbCallback
+# and the rest is up to you
 
 
 def get_cnn_architecture(imsize=75, channels=3):
@@ -57,7 +61,7 @@ def load_by_name(name, data_dir):
 
 if __name__ == '__main__':
 
-    # extra bonus points - refactor out the hyperparameters
+    # extra super duper bonus points - refactor out the hyperparameters
     # then add them to the wandb init's config= arg
     cnn = get_cnn_architecture()
     prepared_data = get_prepared_data()
@@ -80,26 +84,15 @@ if __name__ == '__main__':
     model_name = 'model'
     model_path = os.path.join(model_dir, model_name)
     
-    from wandb.keras import WandbCallback
-        # for bonus points: enable wandb logging
-    # see https://docs.wandb.ai/guides/integrations/tensorflow
-    import wandb
-    # wandb.tensorboard.patch(root_logdir=model_dir)
-    wandb.init(
-        project='dvc_demo',
-        # sync_tensorboard=True
-    )
-
+    # TODO may want some wandb stuff here
+    
     default_callbacks = [
-        # TensorBoard(log_dir=model_dir),
-        WandbCallback()
+        # TODO for wandb, you may want to add some extra callbacks here...
     ]
     fit_callbacks = default_callbacks + [
         ModelCheckpoint(model_path, save_best_only=True, save_weights_only=True),
         EarlyStopping(patience=5, restore_best_weights=True)
     ]
-
-
 
     # Train
     history = cnn.fit(X_train, y_train, 
