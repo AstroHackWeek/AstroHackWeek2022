@@ -1,0 +1,41 @@
+schema: '2.0'
+stages:
+  download_data:
+    cmd: python deepmerge/download_data.py deepmerge/latest_data.fits
+    deps:
+    - path: deepmerge/download_data.py
+      md5: eddce843da93b7cec35fabde7490cced
+      size: 770
+    outs:
+    - path: deepmerge/latest_data.fits
+      md5: 9f8fcb492d394e77f3e34200948638f5
+      size: 2082640320
+  prepare_data:
+    cmd: python deepmerge/prepare_data.py
+    deps:
+    - path: deepmerge/latest_data.fits
+      md5: 9f8fcb492d394e77f3e34200948638f5
+      size: 2082640320
+    - path: deepmerge/prepare_data.py
+      md5: 0165253d2c3ec6d7b61d4a7188d0aee1
+      size: 1646
+    outs:
+    - path: deepmerge/prepared_data
+      md5: 08466132246530494e680412b337c3a1.dir
+      size: 1041317472
+      nfiles: 6
+  train_cnn:
+    cmd: python deepmerge/train_cnn.py
+    deps:
+    - path: deepmerge/prepared_data
+      md5: 08466132246530494e680412b337c3a1.dir
+      size: 1041317472
+      nfiles: 6
+    - path: deepmerge/train_cnn.py
+      md5: b7a5ffca04e127f45925f8f079e0239a
+      size: 3581
+    outs:
+    - path: deepmerge/models/latest
+      md5: 1dd130dead93c5e6d7e6c429e25c7368.dir
+      size: 2109110
+      nfiles: 3

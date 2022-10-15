@@ -8,3 +8,6 @@ protobuf==3.18
 
 # adding
 dvc
+wandb
+fsspec==2022.8.2
+typing-extensions==4.4.0  # astropy incompat

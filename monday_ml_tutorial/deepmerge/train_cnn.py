@@ -1,11 +1,15 @@
 import os
+from babel import default_locale
 
 import numpy as np
 from keras.models import Model
 from keras.layers import Input, Flatten, Dense, Dropout, BatchNormalization
 from keras.layers.convolutional import Convolution2D, MaxPooling2D
 from keras.regularizers import l2
-from keras.callbacks import ModelCheckpoint, EarlyStopping
+from keras.callbacks import ModelCheckpoint, EarlyStopping, TensorBoard
+
+# for bonus points:
+# import wandb
 
 
 def get_cnn_architecture(imsize=75, channels=3):
@@ -53,6 +57,8 @@ def load_by_name(name, data_dir):
 
 if __name__ == '__main__':
 
+    # extra bonus points - refactor out the hyperparameters
+    # then add them to the wandb init's config= arg
     cnn = get_cnn_architecture()
     prepared_data = get_prepared_data()
     X_train, X_valid, X_test, y_train, y_valid, y_test = prepared_data
@@ -67,12 +73,32 @@ if __name__ == '__main__':
     shuffle = True
 
     # model checkpoints will be saved here (only the best)
-    # directory "latest", checkpoint name "model"
-    model_save_dir = 'deepmerge/models/latest/model'
-    callbacks = [
-        ModelCheckpoint(model_save_dir, save_best_only=True, save_weights_only=True),
+    # directory "../latest", checkpoint name "model"
+    model_dir = 'deepmerge/models/latest'
+    os.makedirs(model_dir)
+
+    model_name = 'model'
+    model_path = os.path.join(model_dir, model_name)
+    
+    from wandb.keras import WandbCallback
+        # for bonus points: enable wandb logging
+    # see https://docs.wandb.ai/guides/integrations/tensorflow
+    import wandb
+    # wandb.tensorboard.patch(root_logdir=model_dir)
+    wandb.init(
+        project='dvc_demo',
+        # sync_tensorboard=True
+    )
+
+    default_callbacks = [
+        # TensorBoard(log_dir=model_dir),
+        WandbCallback()
+    ]
+    fit_callbacks = default_callbacks + [
+        ModelCheckpoint(model_path, save_best_only=True, save_weights_only=True),
         EarlyStopping(patience=5, restore_best_weights=True)
     ]
+
 
 
     # Train
@@ -81,7 +107,7 @@ if __name__ == '__main__':
                     epochs=nb_epoch, 
                     validation_data=(X_valid, y_valid),
                     shuffle=shuffle,
-                    callbacks=callbacks,
+                    callbacks=fit_callbacks,
                     verbose=1)
 
-    cnn.evaluate(X_test, y_test)
+    cnn.evaluate(X_test, y_test, callbacks=default_callbacks)
