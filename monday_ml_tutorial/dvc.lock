@@ -4,38 +4,38 @@ stages:
     cmd: python deepmerge/download_data.py deepmerge/latest_data.fits
     deps:
     - path: deepmerge/download_data.py
-      md5: eddce843da93b7cec35fabde7490cced
-      size: 770
+      md5: 8d62ed98239b7f636f9a8d121d1e5ace
+      size: 947
     outs:
     - path: deepmerge/latest_data.fits
-      md5: 9f8fcb492d394e77f3e34200948638f5
-      size: 2082640320
+      md5: 7e9a86987ea422d6fa4bbd369b02c8e9
+      size: 405031680
   prepare_data:
     cmd: python deepmerge/prepare_data.py
     deps:
     - path: deepmerge/latest_data.fits
-      md5: 9f8fcb492d394e77f3e34200948638f5
-      size: 2082640320
+      md5: 7e9a86987ea422d6fa4bbd369b02c8e9
+      size: 405031680
     - path: deepmerge/prepare_data.py
       md5: 0165253d2c3ec6d7b61d4a7188d0aee1
       size: 1646
     outs:
     - path: deepmerge/prepared_data
-      md5: 08466132246530494e680412b337c3a1.dir
-      size: 1041317472
+      md5: 52ff4376f7a25129836960e489bdc982.dir
+      size: 202512768
       nfiles: 6
   train_cnn:
     cmd: python deepmerge/train_cnn.py
     deps:
     - path: deepmerge/prepared_data
-      md5: 08466132246530494e680412b337c3a1.dir
-      size: 1041317472
+      md5: 52ff4376f7a25129836960e489bdc982.dir
+      size: 202512768
       nfiles: 6
     - path: deepmerge/train_cnn.py
       md5: b7a5ffca04e127f45925f8f079e0239a
       size: 3581
     outs:
     - path: deepmerge/models/latest
-      md5: 1dd130dead93c5e6d7e6c429e25c7368.dir
+      md5: e9daa4bbcaba6a654eb0e313abdd000b.dir
       size: 2109110
       nfiles: 3
