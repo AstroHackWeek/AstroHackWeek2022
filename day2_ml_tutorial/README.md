@@ -1,5 +1,5 @@
 # Day 2 afternoon session: Practical machine learning for astronomers 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AstroHackWeek/AstroHackWeek2022)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jwuphysics/AstroHackWeek2022)
 
 This repository contains two machine learning tutorials. We will learn how to apply several machine learning algorithms, ranging from polynomial regression and random forests to deep convolutional neural networks, in order to answer a science qeustion (see e.g. [Wu 2020](https://ui.adsabs.harvard.edu/abs/2020ApJ...900..142W/abstract)). These notebooks will also help you gain familiarity with the `scikit-learn` and `pytorch`/`fastai` Python packages for machine learning.
 
@@ -8,13 +8,13 @@ Presented by John F. Wu ([@jwuphysics](https://github.com/jwuphysics)).
 # Getting started
 
 ## Running on Google Colab (*recommended*)
-Open the Colab notebooks for the [introductory machine learning (part 1)](https://colab.research.google.com/github/AstroHackWeek/AstroHackWeek2022/blob/main/day2/01-intro-machine-learning.ipynb) and the [deep learning (part 2)](https://colab.research.google.com/github/AstroHackWeek/AstroHackWeek2022/blob/main/day2/02-deep-learning.ipynb) sessions.
+Open the Colab notebooks for the [introductory machine learning (part 1)](https://colab.research.google.com/github/jwuphysics/AstroHackWeek2022/blob/main/day2/01-intro-machine-learning.ipynb) and the [deep learning (part 2)](https://colab.research.google.com/github/jwuphysics/AstroHackWeek2022/blob/main/day2/02-deep-learning.ipynb) sessions.
 
 ## Running locally (*not recommended*)
 If you want to run these notebooks locally, then you should clone the repository and set up a conda environment with the necessary packages (`numpy`, `scipy`, `matplotlib`, `pandas`, `scikit-learn`, `pytorch`, `fastai`). The installation process might depend on (a) whether you have an NVIDIA graphics card, and (b) what version of CUDA your system is running. To avoid these complications, just use the Colab notebook!
 
 # Part 1 - Introductory Machine learning 
-[![Colab - Part 1](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AstroHackWeek/AstroHackWeek2022/blob/main/day2/01-intro-machine-learning.ipynb)
+[![Colab - Part 1](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jwuphysics/AstroHackWeek2022/blob/main/day2/01-intro-machine-learning.ipynb)
 
 0. Before getting started
 1. Can we predict a galaxy's neutral hydrogen (HI) content?
@@ -35,7 +35,7 @@ If you want to run these notebooks locally, then you should clone the repository
     - Feature importances
 
 # Part 2 - Deep learning
-[![Colab - Part 2](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AstroHackWeek/AstroHackWeek2022/blob/main/day2/02-deep-learning.ipynb)
+[![Colab - Part 2](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jwuphysics/AstroHackWeek2022/blob/main/day2/02-deep-learning.ipynb)
 
 1. Introducing the science problem (again)
 2. Solving the task with a CNN
