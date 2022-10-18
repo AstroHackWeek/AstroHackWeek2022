@@ -1,0 +1,13 @@
+astropy>=5.0.2
+keras>=2.8.0
+matplotlib>=3.5.1
+numpy>=1.22.3
+sklearn>=0.0
+tensorflow>=2.8.0
+protobuf==3.18
+
+# adding
+dvc
+wandb
+fsspec==2022.8.2
+typing-extensions==4.4.0  # astropy incompat
